@@ -130,5 +130,6 @@ namespace HockeyTestProject
 
             act.Should().Throw<ArgumentException>();
         }
+
     }
 }
