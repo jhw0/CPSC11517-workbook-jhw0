@@ -412,5 +412,10 @@ namespace Hockey.Data
 
             return isParsed;
         }
+
+        public override string ToString()
+        {
+            return $"{FirstName},{LastName},{DateOfBirth.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture)},{BirthPlace.Replace(", ", "-")},{WeightInPounds},{HeightInInches},{JerseyNumber},{Position},{Shot}";
+        }
     }
 }

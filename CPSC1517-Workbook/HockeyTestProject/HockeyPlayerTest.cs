@@ -35,7 +35,7 @@ namespace HockeyTestProject
         // cant be const because age keeps changing by the day
         // .DayNumber tells u exact number of days from that date
         readonly int Age = (DateOnly.FromDateTime(DateTime.Now).DayNumber - new DateOnly(BirthYear, BirthMonth, BirthDay).DayNumber) / 365;
-
+        const string ToStringValue = $"{FirstName},{LastName},Jan-14-1994,{BirthPlace.Replace(", ", "-")},{WeightInPounds},{HeightInInches},{JerseyNumber},{Position},{Shot}";
         // Can quickly run a test to check our method for AGE above
         //[Fact]
         //public void AGE_Is_Correct()
@@ -129,6 +129,17 @@ namespace HockeyTestProject
             Action act = () => player.JerseyNumber = value;
 
             act.Should().Throw<ArgumentException>();
+        }
+
+        [Fact]
+        public void HockeyPlayer_ToString_ReturnsCorrectValue()
+        {
+            HockeyPlayer player = CreateTestHockeyPlayer();
+
+            string actual = player.ToString();
+
+            actual.Should().Be(ToStringValue);
+
         }
 
     }
